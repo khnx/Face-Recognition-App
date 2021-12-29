@@ -6,13 +6,13 @@ function data = load_data()
     n_dir = sum([s_dir(~ismember({s_dir.name}, {'.', '..'})).isdir]);
 
     % container for all photos
-    img_size_x = 160;
-    img_size_y = 100;
-    all_img = zeros(img_size_x*img_size_y, n_dir);
+    img_size_x = 112;
+    img_size_y = 92;
+    all_img = zeros(img_size_x*img_size_y, n_dir*10);
     
-    for ii = 1:n_dir
+    for ii = 1:n_dir    % up to number of models
         cd(strcat('s',num2str(ii)));    % change to ii-th directory
-        for jj = 1:10
+        for jj = 1:10   % 10 photos for each model
             img = imread(strcat(num2str(jj), ".pgm"));
             % resize to correct x/y sizes
             img_2d = imresize(img, [img_size_x, img_size_y]);
@@ -23,8 +23,9 @@ function data = load_data()
         cd ..;
     end
     disp("Database Loaded Successfully!");
-    cd ..;
-
-    data = all_img;
     % return to the beginning directory
+    cd ..;
+    % format for pca()
+    data = reshape(all_img, n_dir*10, img_size_x*img_size_y);
+    data = all_img;
 end
