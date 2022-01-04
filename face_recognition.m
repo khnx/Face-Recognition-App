@@ -1,4 +1,14 @@
-clc; clear;
+%% user image
+% load user image
+user_img = load_user_img();
+
+% exit if image is not added
+if isequal(user_img, 0)
+    disp('Add an Image!')
+    return;
+end
+
+%% data set images
 
 img_data = load_data();
 
@@ -26,14 +36,14 @@ eigenfaces = coeff(1:no_components, :);
 
 weights = eigenfaces * data_reduced';
 
-% load sample image
-img_sample = load_sample(20, 5);
-sample_reduced(1,:) = single(img_sample(1,:)) - single(mu);
-sample_weight = eigenfaces * sample_reduced';
+%% user image
+
+user_img_reduced(1,:) = single(user_img(1,:)) - single(mu);
+user_img_weight = eigenfaces * user_img_reduced';
 
 euclidean_dist = zeros(1, no_images);
 for ii=1:no_images
-    euclidean_dist(1,ii) = norm(weights(:, ii) - sample_weight);
+    euclidean_dist(1,ii) = norm(weights(:, ii) - user_img_weight);
 end
 
 [min_dist, best_match] = min(euclidean_dist);
@@ -41,9 +51,10 @@ end
 fprintf("Best match: %i\n", best_match(1,1));
 fprintf("Euclidean distance: %i\n", min_dist);
 
+%% plot resutls
 subplot(1,2,1);
 imshow(uint8(reshape(img_data(best_match, :), 112, 92)));
 title('Best match');
 subplot(1,2,2);
-imshow(uint8(reshape(img_sample(1,:), 112, 92)));
+imshow(uint8(reshape(user_img(1,:), 112, 92)));
 title('Original photo');
