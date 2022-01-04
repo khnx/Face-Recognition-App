@@ -1,4 +1,4 @@
-function data = load_data()
+function [data, no_img] = load_data()
     cd dataset;      % /dataset
     s_dir = dir(pwd);
     % number of directories inside /dataset

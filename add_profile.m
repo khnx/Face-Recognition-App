@@ -28,7 +28,7 @@ function [] = add_profile()
         cd(strcat(root_path, "\", add_profile));
         img_size_x = 112;
         img_size_y = 92;
-        all_img = zeros(no_img, img_size_x * img_size_y);
+        all_img = zeros(no_img, img_size_x * img_size_y, 'uint8');
         for ii = 1:no_img
             % read an image
             img = imread(strcat(num2str(ii), '.jpg'));
@@ -37,7 +37,8 @@ function [] = add_profile()
             % resize image to 112x92
             img_resized = imresize(img_gray, [img_size_x, img_size_y]);
             % reshape to 1x112*92
-            all_img(ii, :) = reshape(img_resized, 1, 112*92);
+            img_reshaped = reshape(img_resized, 1, img_size_x*img_size_y);
+            all_img(ii, :) = uint8(img_reshaped);
             % remove img
             delete(strcat(num2str(ii), ".jpg"));
         end
