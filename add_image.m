@@ -20,5 +20,5 @@ function [] = add_image()
         disp("Image Added Successfully.")
         else
             disp("Image Could Not Be Added.")
-        end
+    end
 end
