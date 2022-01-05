@@ -18,7 +18,7 @@ function [] = add_image_to_the_profile()
         no_imgs = numel(dir('*.jpg'));
         imwrite(file, strcat(num2str(no_imgs+1), '.jpg'));
         cd ..;
-        disp("Image added successfully.")
+        disp("Image added to the profile successfully.")
     else
             disp("Image Not Added.")
     end
