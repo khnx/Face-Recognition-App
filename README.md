@@ -2,7 +2,7 @@
 
 ## Example Use
 
-![Alt Example use]https://github.com/khnx/matlab_project/blob/main/example_use.PNG
+![Alt Example use](example_use.PNG)
 
 ## Dataset Source
 
