@@ -6,6 +6,8 @@
 
 ## Dataset Source
 
+The one I used comes from AT&T, you can download it from here:
+
 https://www.kaggle.com/kasikrit/att-database-of-faces/download
 
 Extract this file and rename it to "dataset", move it to the project root file (where all .m files reside). Make sure all contents of dataset are folders named "sA" where A is the next natural number. Contents of each "sA" file ought to be "B.pgm" files, where B is the next natural number (for each image).
