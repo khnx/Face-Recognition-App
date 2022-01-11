@@ -1,4 +1,3 @@
-% choose the last person as sample
 function data = load_user_img()
 
     % img sizes

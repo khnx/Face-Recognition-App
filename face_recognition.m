@@ -14,10 +14,10 @@ function [ ...
     end
     
     %% data set images
-    
+
     [img_data, no_img] = load_data();
     
-    [coeff, ~, ~, ~, explained, mu] = pca(double(img_data));
+    [coeff, ~, ~, ~, ~, mu] = pca(double(img_data));
     
     coeff = single(coeff');
     
@@ -26,11 +26,7 @@ function [ ...
     img_size = size(img_data, 2);
     
     % number of significant PCAs
-    no_components = 1;
-    while explained(no_components,1) > 1
-        no_components = no_components +1;
-    end
-    no_components = no_components -1;
+    no_components = 50;
     
     data_reduced = zeros(no_images, img_size, 'single');
     for ii=1:no_images
@@ -53,6 +49,7 @@ function [ ...
     
     [min_dist, best_match] = min(euclidean_dist);
     
+    % determine the number of the best matched profile
     ii = 0;
     no_profile = 1;
     while ii < best_match
@@ -61,20 +58,10 @@ function [ ...
     end
     no_profile = no_profile -1;
     
-    fprintf("Best match: %i\n", best_match(1,1));
-    fprintf("Euclidean distance: %i\n", min_dist);
-    fprintf("Number of best matched profile: %i.\n", no_profile);
-    
+    %% send data for display
     out_img_original = uint8(reshape(user_img(1,:), 112, 92));
     out_img_recognized = uint8(reshape(img_data(best_match, :), 112, 92));
     out_best_match = best_match;
     out_matched_profile = no_profile;
-    out_euclidean_distance = euclidean_dist;
-    %% plot resutls
-    subplot(1,2,1);
-    imshow(uint8(reshape(img_data(best_match, :), 112, 92)));
-    title('Best match');
-    subplot(1,2,2);
-    imshow(uint8(reshape(user_img(1,:), 112, 92)));
-    title('Original photo');
+    out_euclidean_distance = min_dist;
 end
