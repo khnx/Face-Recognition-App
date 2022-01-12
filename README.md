@@ -20,7 +20,7 @@ Extract this file and rename it to "dataset", move it to the project root file (
 
 To use the application, run app.mlapp.
 
-To add perform recognition, you must add an image - select Add Image button and select the image you fancy. Then push the button labeled Recognize and wait for the results.
+To perform recognition, you must add an image - select Add Image button and select the image you fancy. Then push the button labeled Recognize and wait for the results.
 
 To add a new profile, select Add an Image to the Profile button and insert any image you want. To add more images just do as previously - select  Add an Image to the Profile. You can add as many images as you want, but they will become less relevant to the program, the more images you provide. Finally, select Add Profile button and voila - you've created a new profile.
 
