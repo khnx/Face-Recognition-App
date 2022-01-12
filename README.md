@@ -1,4 +1,8 @@
-# Face Recognition System in Matlab (Windows)
+# Face Recognition System in Matlab
+
+## About
+
+This project was made as an assignment for Matlab inteoductory course, therefore it will not longer be supported. The whole project was made on and for Windows, but may work well on other systems too.
 
 ## Example
 
