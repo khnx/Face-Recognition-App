@@ -17,7 +17,8 @@ function [] = add_profile()
         return;
     end
     % create a directory for the new profile
-    cd(strcat(root_path, "\dataset"));
+    cd(root_path);
+    cd("dataset");
     % number of directories inside /dataset
     s_dir = dir(pwd);
     no_dir = sum([s_dir(~ismember({s_dir.name}, {'.', '..'})).isdir]);
@@ -25,7 +26,8 @@ function [] = add_profile()
     cd(root_path);
 
     % move imgs from add_profile to /dataset
-    cd(strcat(root_path, "\", add_profile));
+    cd(root_path);
+    cd(add_profile);
     img_size_x = 112;
     img_size_y = 92;
     all_img = zeros(no_img, img_size_x * img_size_y, 'uint8');
@@ -48,7 +50,8 @@ function [] = add_profile()
     rmdir(add_profile);
 
     % copy imgs into /dataset/s_
-    cd(strcat(root_path, "\dataset"));
+    cd(root_path);
+    cd("dataset");
 
     s_ii = strcat("s", num2str(no_dir+1));
     mkdir(s_ii);

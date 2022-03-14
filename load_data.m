@@ -8,7 +8,7 @@ function [data, no_img] = load_data()
     no_img = 1:no_dir;      % number of imgs in each directory
     no_all_img = 0;         % number of all imgs
     for ii = 1:no_dir       % up to number of profiles
-        cd(strcat('s',num2str(ii)));    % ii-th s
+        cd(strcat('s', num2str(ii)));    % ii-th s
         no_img(ii) = numel(dir('*.pgm'));
         no_all_img = no_all_img + no_img(ii);
         cd ..;
